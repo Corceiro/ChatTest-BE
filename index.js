@@ -35,11 +35,14 @@ server.post('/addMessages', function(req, res) {
     const message = req.body.message;
 
     let users = [user1, user2];
-    //Validate user
+
+    //Validate if users exist
     validateUsers(users).then((result) => {
         console.log(result);
         if(result == "Success") {
             console.log("Users exists");
+
+            //Add message
             addMessage(user1, user2, message).then((result) => {
                 console.log(result);
                 if (result) {
